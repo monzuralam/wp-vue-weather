@@ -97,6 +97,9 @@ final class WP_Vue_Weather {
      * @return void
      */
     public function wpvueweather_init_plugin() {
+        if (is_admin()) {
+            new \WPVueWeather\Backend();
+        }
     }
 } // WP_Vue_Weather
 
