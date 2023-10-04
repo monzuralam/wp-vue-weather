@@ -100,6 +100,7 @@ final class WP_Vue_Weather {
         if (is_admin()) {
             new \WPVueWeather\Backend();
         }
+        new \WPVueWeather\Assets();
     }
 } // WP_Vue_Weather
 
