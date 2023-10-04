@@ -21,6 +21,19 @@ class Assets {
      */
     public function register(){
         $this->register_scripts( $this->get_scripts() );
+        $this->register_styles( $this->get_styles() );
+    }
+
+    /**
+     * Register Styles
+     *
+     * @param [type] $styles
+     * @return void
+     */
+    public function register_styles( $styles ){
+        foreach( $styles as $handle => $style ){
+            wp_register_style( $handle, $style['src'], false, $style['version'], 'all' );
+        }
     }
 
     /**
@@ -36,6 +49,22 @@ class Assets {
 
             wp_register_script( $handle, $script[ 'src' ], $deps, $version, $in_footer );
         }
+    }
+
+    /**
+     * Get all register styles
+     *
+     * since 1.0
+     */
+    public function get_styles(){
+        $styles = [
+            'wpvue-style' => [
+                'src'       =>  WPVUEWEATHER_URL . '/assets/css/style.css',
+                'version'   =>  \filemtime( WPVUEWEATHER_PATH . '/assets/css/style.css' )
+            ],
+        ];
+
+        return $styles;
     }
 
     /**
