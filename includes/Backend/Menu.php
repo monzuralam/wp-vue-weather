@@ -49,6 +49,8 @@ class Menu {
      * @return void
      */
     public function enqueue_scripts() {
+        wp_enqueue_style('wpvue-style');
+        wp_enqueue_script('wpvue-main');
     }
 
     /**
