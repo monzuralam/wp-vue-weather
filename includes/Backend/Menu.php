@@ -24,7 +24,7 @@ class Menu {
         $slug = 'wp-vue-weather';
         $capablity = 'manage_options';
 
-        $hook = add_menu_page(__('WP Vue Weather', 'wp-vue-weather'), __('WP Vue Weather', 'wp-vue-weather'), $capablity, $slug, array($this, 'plugin_page'), 'dashicons-cloud', null);
+        $hook = add_menu_page(__('WP Vue Weather', 'wp-vue-weather'), __('WP Vue Weather', 'wp-vue-weather'), $capablity, $slug, array($this, 'plugin_page'), 'dashicons-cloud', 40);
 
         if (current_user_can($capablity)) {
             $submenu[$slug][] = [__('Weather', 'wp-vue-weather'), $capablity, 'admin.php?page=' . $slug . '#/'];
