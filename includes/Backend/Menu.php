@@ -51,6 +51,11 @@ class Menu {
     public function enqueue_scripts() {
         wp_enqueue_style('wpvue-style');
         wp_enqueue_script('wpvue-main');
+        wp_localize_script('wpvue-main', 'wpvueAdminLocalizer', [
+            'adminUrl'      =>      admin_url('/'),
+            'ajaxUrl'       =>      admin_url('/admin-ajax.php'),
+            'apiUrl'        =>      home_url('/wp-json')
+        ]);
     }
 
     /**
