@@ -77,9 +77,16 @@ final class WP_Vue_Weather {
     public function wpvueweather_active() {
 
         $installed = get_option('wpvueweather_installed');
+        $api_key   = get_option('wpvueweather_api_key');
+        $location  = get_option('wpvueweather_location');
 
         if (!$installed) {
             update_option('wpvueweather_installed', time());
+        }
+
+        if(!$api_key && !$location){
+            update_option( 'wpvueweather_api_key', '');
+            update_option( 'wpvueweather_location', '');
         }
 
         update_option('wpvueweather_version', WPVUEWEATHER_VERSION);
@@ -101,6 +108,7 @@ final class WP_Vue_Weather {
             new \WPVueWeather\Backend();
         }
         new \WPVueWeather\Assets();
+        new \WPVueWeather\Api();
     }
 } // WP_Vue_Weather
 
