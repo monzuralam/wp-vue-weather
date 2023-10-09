@@ -1,9 +1,21 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
+import { useSettingStore } from "../stores/settings.js";
+
+const settingStore = useSettingStore();
+
 const Setting = ref({
   api_key: "",
   location: "",
+});
+
+onMounted(() => {
+  const initData = settingStore.fetchSettingData;
+  initData.then( (value) => {
+    Setting.value.api_key = value.api_key;
+    Setting.value.location = value.location;
+  })
 });
 
 const updateSetting = () => {
